@@ -1,0 +1,39 @@
+@use '../../styles/variables.scss';
+
+.weeklyTrendsFilms {
+  .header {
+    margin: 60px 0 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    .title {
+      margin: 0;
+      color: variables.$white;
+      font-family: Roboto;
+      font-size: 28px;
+      font-weight: 500;
+      line-height: 33px;
+      text-align: left;
+      text-transform: uppercase;
+    }
+
+    .seeAll {
+      margin: 0;
+      color: variables.$orange;
+      font-family: Roboto;
+      font-size: 28px;
+      font-weight: 500;
+      line-height: 33px;
+      text-align: left;
+      text-decoration: none;
+    }
+  }
+
+  .films {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+  }
+}

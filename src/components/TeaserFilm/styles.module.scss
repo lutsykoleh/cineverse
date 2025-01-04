@@ -1,0 +1,66 @@
+@use '../../styles/variables.scss';
+
+.film {
+  display: flex;
+  width: 395px;
+  height: 575px;
+  position: relative;
+  border-radius: 5px;
+
+  .imgWrapper {
+    position: relative;
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 40%;
+      background: linear-gradient(
+        to top,
+        rgba(0, 0, 0, 1),
+        rgba(0, 0, 0, 0.04)
+      );
+      border-radius: 8px;
+    }
+
+    img {
+      width: 395px;
+      height: 575px;
+      object-fit: cover;
+      border-radius: 10px;
+    }
+  }
+
+  .info {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    right: 20px;
+
+    .title {
+      margin: 0;
+      font-size: 20px;
+      font-weight: 500;
+      line-height: 23px;
+      text-transform: uppercase;
+      color: variables.$white;
+    }
+
+    .details {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 5px;
+
+      .genre {
+        margin: 0;
+        font-size: 18px;
+        font-weight: 500;
+        line-height: 20px;
+        color: variables.$grey;
+      }
+    }
+  }
+}

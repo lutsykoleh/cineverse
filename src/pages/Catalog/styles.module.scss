@@ -1,0 +1,12 @@
+.films {
+  display: grid;
+  grid-template-columns: repeat(3, 395px);
+  justify-content: center;
+  gap: 15px;
+}
+
+.rc-pagination {
+  display: flex;
+  justify-content: center;
+  margin: 50px 0;
+}

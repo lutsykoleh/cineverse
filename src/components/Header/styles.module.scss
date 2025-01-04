@@ -1,0 +1,123 @@
+@use '../../styles/variables.scss';
+
+.header {
+  max-width: 1280px;
+  max-height: 60px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 auto;
+}
+
+.logo {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  text-decoration: none;
+
+  img {
+    width: 48px;
+    height: 48px;
+  }
+
+  p {
+    margin: 0 8px;
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 28px;
+    letter-spacing: 0%;
+    text-align: center;
+    color: variables.$white;
+  }
+}
+
+.nav {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  ul {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 40px;
+
+    li {
+      list-style: none;
+    }
+  }
+}
+
+.navLink {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 16px;
+  letter-spacing: 0%;
+  text-decoration: none;
+  text-transform: uppercase;
+  color: variables.$grey;
+
+  &.active {
+    color: variables.$orange;
+    font-weight: bold;
+  }
+}
+
+// switcher to light/black theme
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 24px;
+  align-self: center;
+
+  input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: '';
+  height: 20px;
+  width: 20px;
+  left: 4px;
+  bottom: 2.5px;
+  background-color: white;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+input:checked + .slider {
+  background-color: #2196f3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(30px);
+  -ms-transform: translateX(30px);
+  transform: translateX(30px);
+}
+
+/* Rounded sliders */
+.slider {
+  border-radius: 30px;
+}
+
+.slider:before {
+  border-radius: 50%;
+}

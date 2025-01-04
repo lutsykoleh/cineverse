@@ -1,0 +1,15 @@
+@use './styles/variables';
+
+* {
+  font-family: variables.$font;
+}
+
+html {
+  background-color: variables.$dark;
+}
+
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 32px;
+}

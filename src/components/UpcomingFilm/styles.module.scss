@@ -1,0 +1,81 @@
+@use '../../styles/variables.scss';
+
+h2.title {
+  margin-top: 50px;
+  color: variables.$white;
+  font-size: 28px;
+  text-transform: uppercase;
+}
+
+.film {
+  display: flex;
+  flex-direction: row;
+
+  .imgWrapper {
+    max-width: 100%;
+
+    img {
+      width: 100%;
+    }
+  }
+
+  .info {
+    margin-left: 16px;
+    max-width: 400px;
+    color: variables.$white;
+
+    .title {
+      margin-top: 10px;
+      font-size: 32px;
+      font-family: variables.$font;
+      font-weight: 500;
+      line-height: 38px;
+      text-align: left;
+      text-transform: uppercase;
+    }
+
+    .details {
+      p {
+        display: flex;
+        flex-direction: row;
+        max-width: 250px;
+        justify-content: space-between;
+        strong {
+          font-weight: 500;
+          font-size: 16px;
+          color: variables.$grey;
+        }
+
+        .releaseDate {
+          color: variables.$orange;
+        }
+
+        .vote {
+          display: flex;
+          gap: 5px;
+          span {
+            color: variables.$dark;
+            padding: 1px 6px;
+            background-color: variables.$white;
+            border-radius: 5px;
+          }
+        }
+      }
+    }
+
+    .about {
+      margin: 10px;
+      h2 {
+        font-size: 16px;
+        text-transform: uppercase;
+        color: variables.$grey;
+      }
+
+      p {
+        font-size: 14px;
+        font-weight: 400;
+        margin-bottom: 20px;
+      }
+    }
+  }
+}
