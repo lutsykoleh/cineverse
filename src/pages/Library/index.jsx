@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import Filters from '../../components/Filters'
+import MoviesFilter from '../../components/MoviesFilter'
 import TeaserFilm from '../../components/TeaserFilm'
 import styles from './styles.module.scss'
 
@@ -8,7 +8,7 @@ const Library = () => {
 
   return (
     <div className={styles.library}>
-      <Filters />
+      <MoviesFilter />
       <div className={styles.films}>
         {films?.results?.map((film) => (
           <TeaserFilm

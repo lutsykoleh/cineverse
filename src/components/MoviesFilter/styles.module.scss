@@ -1,0 +1,8 @@
+@use '../../styles/variables';
+
+.moviesFilters {
+  margin: 40px 32px;
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+}

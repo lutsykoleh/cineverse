@@ -16,14 +16,14 @@ const UpcomingFilm = () => {
               <strong>Release date:</strong>
               <span className={styles.releaseDate}>03.03.2023</span>
             </p>
-            <p>
+            <div>
               <strong>Vote / Votes:</strong>
               <div className={styles.vote}>
                 <span className={styles.voteScore}>7.3</span>
                 <div>/</div>
                 <span className={styles.voteCount}>1260</span>
               </div>
-            </p>
+            </div>
             <p>
               <strong>Popularity:</strong>
               <span className={styles.popularity}>99.9</span>

@@ -1,36 +1,70 @@
-import { useState } from 'react'
+import { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import {
+  fetchPopularMovies,
+  resetFilters,
+  setPage,
+} from '../../redux/slices/moviesSlice'
 
 import styles from './styles.module.scss'
 
-import Filters from '../../components/Filters'
-import TeaserFilm from '../../components/TeaserFilm'
+import MoviesFilter from '../../components/MoviesFilter'
 import Pagination from '../../components/Pagination'
+import ListMovies from '../../components/ListMovies'
+import Skeleton from '../../components/Skeleton'
+import NotFound from '../../components/NotFound'
 
 const Catalog = () => {
-  const [films, setFilms] = useState([])
+  const dispatch = useDispatch()
+  const {
+    popular,
+    status,
+    page,
+    totalPages,
+    sortBy,
+    selectedGenres,
+    selectedYear,
+  } = useSelector((state) => state.movies)
+
+  useEffect(() => {
+    dispatch(
+      fetchPopularMovies({
+        page,
+        sortBy,
+        genre: selectedGenres,
+        year: selectedYear,
+      })
+    )
+  }, [dispatch, page, sortBy, selectedGenres, selectedYear])
+
+  useEffect(() => {
+    return () => {
+      dispatch(resetFilters())
+    }
+  }, [dispatch])
+
+  const handlePageChange = (newPage) => {
+    dispatch(setPage(newPage))
+  }
+
+  if (status === 'failed') {
+    return <NotFound />
+  }
 
   return (
     <div className={styles.catalog}>
-      <Filters />
-      <div className={styles.films}>
-        {films?.results?.map((film) => (
-          <TeaserFilm
-            key={film?.id}
-            {...{
-              id: film?.id,
-              img: film?.poster_path,
-              title: film?.title,
-              genre: film?.genre_ids,
-              date: film?.release_date,
-              rating: film?.vote_average,
-            }}
-          />
-        ))}
-      </div>
+      <MoviesFilter />
+      {status === 'loading' ? (
+        <Skeleton count={9} />
+      ) : popular.length === 0 ? (
+        <NotFound />
+      ) : (
+        <ListMovies movie={popular} />
+      )}
       <Pagination
-        currentPage={currentPage}
+        currentPage={page}
         totalPages={totalPages}
-        onChange={(page) => console.log(page)}
+        onChange={handlePageChange}
       />
     </div>
   )

@@ -1,42 +1,29 @@
-import { useState } from 'react'
 import Select from 'react-select'
 
-const options = [
-  {
-    value: 'text1',
-    label: 'text1',
-  },
-  {
-    value: 'text2',
-    label: 'text2',
-  },
-  {
-    value: 'text3',
-    label: 'text3',
-  },
-  {
-    value: 'text4',
-    label: 'text4',
-  },
-]
-
-function Dropdown({ placeholder = '' }) {
-  const [value, setValue] = useState('text1')
-
+function Dropdown({
+  isMulti = false,
+  placeholder = '',
+  options = [],
+  value,
+  onChange,
+}) {
   const getValue = () => {
-    return value ? options.find((c) => c.value === value) : ''
-  }
-
-  const onChange = (value) => {
-    setValue(value)
+    if (value) {
+      return isMulti
+        ? options.filter((g) => value.indexOf(g.value) >= 0)
+        : options.find((g) => g.value === value)
+    } else {
+      return isMulti ? [] : ''
+    }
   }
 
   const customStyles = {
     container: (provided) => ({
       ...provided,
+      display: 'flex',
       height: '48px',
     }),
-    control: (provided) => ({
+    control: (provided, state) => ({
       ...provided,
       height: '100%',
       backgroundColor: 'transparent',
@@ -44,6 +31,7 @@ function Dropdown({ placeholder = '' }) {
       borderRadius: '8px',
       color: 'white',
       boxShadow: 'none',
+      minWidth: state.selectProps.isMulti ? '150px' : 'auto',
       '&:hover': {
         borderColor: 'white',
       },
@@ -63,7 +51,6 @@ function Dropdown({ placeholder = '' }) {
       fontSize: state.isSelected ? '24px' : '16px',
       backgroundColor: 'none',
     }),
-
     singleValue: (provided) => ({
       ...provided,
       color: 'white',
@@ -72,19 +59,31 @@ function Dropdown({ placeholder = '' }) {
       ...provided,
       color: 'white',
     }),
+    multiValue: (provided) => ({
+      ...provided,
+      color: 'white',
+      backgroundColor: 'rgb(248, 119, 25)',
+    }),
+    multiValueLabel: (provided) => ({
+      ...provided,
+      color: 'rgb(255, 255, 255)',
+    }),
+    multiValueRemove: (provided) => ({
+      ...provided,
+      color: 'white',
+    }),
   }
 
   return (
-    <>
-      <Select
-        classNamePrefix="custom-select"
-        onChange={onChange}
-        value={getValue()}
-        options={options}
-        placeholder={placeholder}
-        styles={customStyles}
-      />
-    </>
+    <Select
+      classNamePrefix="custom-select"
+      onChange={onChange}
+      value={getValue()}
+      isMulti={isMulti}
+      options={options}
+      placeholder={placeholder}
+      styles={customStyles}
+    />
   )
 }
 

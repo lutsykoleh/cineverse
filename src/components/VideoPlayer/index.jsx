@@ -136,16 +136,14 @@ const MovieDetails = ({ movie, videos, recomedationsMovies }) => {
             </div>
           </div>
 
-          {videos?.results?.length > 0 && (
-            <VideoPlayer videos={videos.results} />
-          )}
+          {videos?.length > 0 && <VideoPlayer videos={videos} />}
         </div>
       </div>
       <div className={styles.recomedationsMovie}>
         <h2>Recomedations</h2>
         <div className={styles.recomedations}>
           <Slider {...settings}>
-            {recomedationsMovies.results.map((movie) => (
+            {recomedationsMovies.map((movie) => (
               <TeaserFilm
                 key={movie?.id}
                 {...{
