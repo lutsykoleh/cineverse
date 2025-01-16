@@ -45,9 +45,6 @@ const MoviesFilter = () => {
     new Date().getFullYear() - 5
   )
 
-  console.log(yearOptions)
-  console.log(genres)
-
   return (
     <div className={styles.moviesFilters}>
       <Dropdown

@@ -22,7 +22,6 @@ const initialState = {
 export const fetchPopularMovies = createAsyncThunk(
   'movies/fetchPopularMovies',
   async ({ page = 1, sortBy = 'popularity.desc', genre = '', year = '' }) => {
-    console.log({ page, sortBy, genre, year })
     const response = await axios.get(
       `https://api.themoviedb.org/3/discover/movie?api_key=${
         import.meta.env.VITE_API_KEY
@@ -86,6 +85,12 @@ const moviesSlice = createSlice({
       state.selectedYear = ''
       state.sortBy = 'popularity.desc'
       state.page = 1
+    },
+    setFilters: (state, action) => {
+      state.selectedGenres = action.payload.genre
+      state.selectedYear = Number(action.payload.year)
+      state.sortBy = action.payload.sortBy
+      state.page = action.payload.page
     },
   },
   extraReducers: (builder) => {
@@ -154,5 +159,6 @@ export const {
   setSelectedYear,
   setPage,
   resetFilters,
+  setFilters,
 } = moviesSlice.actions
 export default moviesSlice.reducer
