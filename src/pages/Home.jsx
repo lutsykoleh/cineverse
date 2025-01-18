@@ -4,11 +4,11 @@ import WeeklyTrendsFilms from '../components/WeeklyTrendsFilms'
 
 function Home() {
   return (
-    <div className="container">
+    <main>
       <Banner />
       <WeeklyTrendsFilms />
       <UpcomingFilm />
-    </div>
+    </main>
   )
 }
 

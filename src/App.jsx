@@ -11,14 +11,16 @@ import Library from './pages/Library'
 
 function App() {
   return (
-    <div className="container">
+    <div className="wrapper">
       <Header />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/catalog" element={<Catalog />} />
-        <Route path="/library" element={<Library />} />
-        <Route path="/films/:id" element={<Film />} />
-      </Routes>
+      <main className="main">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/catalog" element={<Catalog />} />
+          <Route path="/library" element={<Library />} />
+          <Route path="/films/:id" element={<Film />} />
+        </Routes>
+      </main>
       <Footer />
     </div>
   )
