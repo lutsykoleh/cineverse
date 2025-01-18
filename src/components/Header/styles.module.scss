@@ -27,7 +27,6 @@
     line-height: 28px;
     letter-spacing: 0%;
     text-align: center;
-    color: variables.$white;
   }
 }
 
@@ -55,7 +54,6 @@
   letter-spacing: 0%;
   text-decoration: none;
   text-transform: uppercase;
-  color: variables.$grey;
 
   &.active {
     color: variables.$orange;
@@ -103,7 +101,7 @@
 }
 
 input:checked + .slider {
-  background-color: #2196f3;
+  background: variables.$gradient;
 }
 
 input:checked + .slider:before {
@@ -119,4 +117,30 @@ input:checked + .slider:before {
 
 .slider:before {
   border-radius: 50%;
+}
+
+// Dark Mode Styles
+:global(body.dark) {
+  .logo {
+    p {
+      color: variables.$white;
+    }
+  }
+
+  .navLink {
+    color: variables.$grey;
+  }
+}
+
+// Light Mode Styles
+:global(body.light) {
+  .logo {
+    p {
+      color: variables.$secondary-dark;
+    }
+  }
+
+  .navLink {
+    color: variables.$dark-grey;
+  }
 }

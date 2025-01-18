@@ -2,7 +2,6 @@
 
 h2.title {
   margin-top: 50px;
-  color: variables.$white;
   font-size: 28px;
   text-transform: uppercase;
 }
@@ -22,7 +21,6 @@ h2.title {
   .info {
     margin-left: 16px;
     max-width: 400px;
-    color: variables.$white;
 
     .title {
       margin-top: 10px;
@@ -43,21 +41,30 @@ h2.title {
         strong {
           font-weight: 500;
           font-size: 16px;
-          color: variables.$grey;
         }
 
         .releaseDate {
           color: variables.$orange;
         }
+      }
+      .voteWrapper {
+        display: flex;
+        max-width: 250px;
+        justify-content: space-between;
+
+        strong {
+          font-size: 16px;
+          font-weight: 500;
+        }
 
         .vote {
           display: flex;
           gap: 5px;
-          span {
-            color: variables.$dark;
+          p {
+            margin: 0;
             padding: 1px 6px;
-            background-color: variables.$white;
             border-radius: 5px;
+            color: variables.$dark;
           }
         }
       }
@@ -68,13 +75,82 @@ h2.title {
       h2 {
         font-size: 16px;
         text-transform: uppercase;
-        color: variables.$grey;
       }
 
       p {
         font-size: 14px;
         font-weight: 400;
         margin-bottom: 20px;
+      }
+    }
+  }
+}
+
+// Dark Mode Styles
+:global(body.dark) {
+  h2.title {
+    color: variables.$white;
+  }
+
+  .film {
+    .info {
+      color: variables.$white;
+
+      .details {
+        p {
+          strong {
+            color: variables.$grey;
+          }
+        }
+
+        .voteWrapper {
+          strong {
+            color: variables.$grey;
+          }
+          .vote {
+            p {
+              background-color: variables.$white;
+            }
+          }
+        }
+      }
+
+      .about {
+        h2 {
+          color: variables.$grey;
+        }
+      }
+    }
+  }
+}
+
+// Light Mode Styles
+:global(body.light) {
+  h2.title {
+    color: variables.$dark;
+  }
+
+  .film {
+    .info {
+      color: variables.$dark;
+
+      .details {
+        p {
+          strong {
+            color: variables.$dark;
+          }
+        }
+        .vote {
+          p {
+            background-color: rgb(232, 232, 232);
+          }
+        }
+      }
+
+      .about {
+        h2 {
+          color: variables.$dark;
+        }
       }
     }
   }

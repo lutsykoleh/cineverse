@@ -4,13 +4,17 @@
   font-family: variables.$font;
 }
 
-html {
-  background-color: variables.$dark;
-}
-
 html,
 body {
   height: 100%;
+}
+
+body.dark {
+  background-color: variables.$dark;
+}
+
+body.light {
+  background-color: variables.$white-theme;
 }
 
 .wrapper {

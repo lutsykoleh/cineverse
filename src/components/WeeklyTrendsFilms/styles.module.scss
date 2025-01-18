@@ -10,7 +10,6 @@
 
     .title {
       margin: 0;
-      color: variables.$white;
       font-family: Roboto;
       font-size: 28px;
       font-weight: 500;
@@ -35,5 +34,28 @@
     display: flex;
     flex-direction: row;
     gap: 20px;
+  }
+}
+
+// Dark Mode Styles
+:global(body.dark) {
+  .weeklyTrendsFilms {
+    .header {
+      .title {
+        color: variables.$white;
+      }
+    }
+  }
+}
+
+// Light Mode Styles
+
+:global(body.light) {
+  .weeklyTrendsFilms {
+    .header {
+      .title {
+        color: variables.$secondary-dark;
+      }
+    }
   }
 }

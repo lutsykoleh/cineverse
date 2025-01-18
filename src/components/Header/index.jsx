@@ -1,7 +1,17 @@
 import { Link, NavLink } from 'react-router-dom'
 import styles from './styles.module.scss'
+import { useDispatch, useSelector } from 'react-redux'
+import { toggleTheme } from '../../redux/slices/themeSlice'
+import { useEffect } from 'react'
 
 const Header = () => {
+  const theme = useSelector((state) => state.theme.theme)
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    document.body.className = theme
+  }, [theme])
+
   return (
     <header className={styles.header}>
       <div>
@@ -30,7 +40,11 @@ const Header = () => {
         </ul>
       </nav>
       <label className={styles.switch}>
-        <input type="checkbox" id="checkBox" />
+        <input
+          type="checkbox"
+          id="checkBox"
+          onChange={() => dispatch(toggleTheme())}
+        />
         <span className={styles.slider}></span>
       </label>
     </header>

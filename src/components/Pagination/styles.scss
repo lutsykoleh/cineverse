@@ -17,15 +17,6 @@
       &::after {
         font-size: 48px;
         font-weight: 100;
-        color: variables.$white;
-      }
-    }
-  }
-
-  .rc-pagination-disabled {
-    .rc-pagination-item-link {
-      &::after {
-        color: variables.$grey;
       }
     }
   }
@@ -37,19 +28,11 @@
     align-items: center;
     justify-content: center;
     background-color: transparent;
-    border: 1px solid variables.$grey;
     border-radius: 50%;
-    a {
-      color: variables.$grey;
-    }
 
     &-active {
       background: variables.$gradient;
       border: none;
-
-      a {
-        color: variables.$white;
-      }
     }
   }
 
@@ -57,5 +40,74 @@
     display: flex;
     align-items: end;
     height: 40px;
+  }
+}
+
+body.dark {
+  .rc-pagination {
+    &-prev,
+    &-next {
+      .rc-pagination-item-link {
+        &::after {
+          color: variables.$white;
+        }
+      }
+    }
+
+    .rc-pagination-disabled {
+      .rc-pagination-item-link {
+        &::after {
+          color: variables.$grey;
+        }
+      }
+    }
+
+    .rc-pagination-item {
+      border: 1px solid variables.$grey;
+      a {
+        color: variables.$grey;
+      }
+
+      &-active {
+        a {
+          color: variables.$white;
+        }
+      }
+    }
+  }
+}
+
+body.light {
+  .rc-pagination {
+    &-prev,
+    &-next {
+      .rc-pagination-item-link {
+        &::after {
+          color: variables.$dark-grey;
+        }
+      }
+    }
+
+    .rc-pagination-disabled {
+      .rc-pagination-item-link {
+        &::after {
+          color: variables.$grey;
+        }
+      }
+    }
+
+    .rc-pagination-item {
+      border: 1px solid variables.$dark-grey;
+      a {
+        color: variables.$dark-grey;
+      }
+
+      &-active {
+        border: none;
+        a {
+          color: variables.$secondary-dark;
+        }
+      }
+    }
   }
 }

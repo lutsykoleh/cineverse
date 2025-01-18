@@ -1,3 +1,4 @@
+import { useSelector } from 'react-redux'
 import Select from 'react-select'
 
 function Dropdown({
@@ -7,6 +8,7 @@ function Dropdown({
   value,
   onChange,
 }) {
+  const theme = useSelector((state) => state.theme.theme)
   const getValue = () => {
     if (value) {
       return isMulti
@@ -27,13 +29,13 @@ function Dropdown({
       ...provided,
       height: '100%',
       backgroundColor: 'transparent',
-      border: '1px solid white',
+      border: `1px solid ${theme === 'dark' ? 'white' : 'rgb(89,89,89)'}`,
       borderRadius: '8px',
       color: 'white',
       boxShadow: 'none',
       minWidth: state.selectProps.isMulti ? '150px' : 'auto',
       '&:hover': {
-        borderColor: 'white',
+        borderColor: `${theme === 'dark' ? 'white' : 'rgb(89,89,89)'}`,
       },
     }),
     indicatorSeparator: (provided) => ({ ...provided, display: 'none' }),
@@ -41,27 +43,31 @@ function Dropdown({
       ...provided,
       margin: '0',
       textAlign: 'center',
-      border: '1px solid white',
-      backgroundColor: 'rgb(17, 17, 17)',
+      border: `1px solid ${theme === 'dark' ? 'white' : 'rgb(89,89,89)'}`,
+      backgroundColor: `${
+        theme === 'dark' ? 'rgb(17,17,17)' : 'rgb(248,248,248)'
+      }`,
       borderRadius: '8px',
     }),
     option: (provided, state) => ({
       ...provided,
-      color: state.isSelected ? 'rgb(248, 119, 25);' : 'rgb(255, 255, 255);',
+      color: state.isSelected
+        ? 'rgb(248, 119, 25)'
+        : `${theme === 'dark' ? 'rgb(255, 255, 255)' : 'rgb(40,40,40)'} `,
       fontSize: state.isSelected ? '24px' : '16px',
       backgroundColor: 'none',
     }),
     singleValue: (provided) => ({
       ...provided,
-      color: 'white',
+      color: `${theme === 'dark' ? 'white' : 'rgb(89,89,89)'}`,
     }),
     dropdownIndicator: (provided) => ({
       ...provided,
-      color: 'white',
+      color: `${theme === 'dark' ? 'white' : 'rgb(89,89,89)'}`,
     }),
     multiValue: (provided) => ({
       ...provided,
-      color: 'white',
+      color: `${theme === 'dark' ? 'white' : 'rgb(89,89,89)'}`,
       backgroundColor: 'rgb(248, 119, 25)',
     }),
     multiValueLabel: (provided) => ({
