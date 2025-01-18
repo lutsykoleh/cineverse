@@ -1,0 +1,113 @@
+@use '../../styles/variables.scss';
+
+.rc-pagination {
+  display: flex;
+  justify-content: center;
+  margin: 50px 0;
+
+  &-prev,
+  &-next {
+    .rc-pagination-item-link {
+      background-color: transparent;
+      border: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      &::after {
+        font-size: 48px;
+        font-weight: 100;
+      }
+    }
+  }
+
+  .rc-pagination-item {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: transparent;
+    border-radius: 50%;
+
+    &-active {
+      background: variables.$gradient;
+      border: none;
+    }
+  }
+
+  .rc-pagination-jump-next {
+    display: flex;
+    align-items: end;
+    height: 40px;
+  }
+}
+
+body.dark {
+  .rc-pagination {
+    &-prev,
+    &-next {
+      .rc-pagination-item-link {
+        &::after {
+          color: variables.$white;
+        }
+      }
+    }
+
+    .rc-pagination-disabled {
+      .rc-pagination-item-link {
+        &::after {
+          color: variables.$grey;
+        }
+      }
+    }
+
+    .rc-pagination-item {
+      border: 1px solid variables.$grey;
+      a {
+        color: variables.$grey;
+      }
+
+      &-active {
+        a {
+          color: variables.$white;
+        }
+      }
+    }
+  }
+}
+
+body.light {
+  .rc-pagination {
+    &-prev,
+    &-next {
+      .rc-pagination-item-link {
+        &::after {
+          color: variables.$dark-grey;
+        }
+      }
+    }
+
+    .rc-pagination-disabled {
+      .rc-pagination-item-link {
+        &::after {
+          color: variables.$grey;
+        }
+      }
+    }
+
+    .rc-pagination-item {
+      border: 1px solid variables.$dark-grey;
+      a {
+        color: variables.$dark-grey;
+      }
+
+      &-active {
+        border: none;
+        a {
+          color: variables.$secondary-dark;
+        }
+      }
+    }
+  }
+}

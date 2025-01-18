@@ -1,0 +1,11 @@
+@use '../../styles/variables.scss';
+
+footer {
+  display: flex;
+  justify-content: center;
+  margin: 100px auto 80px;
+
+  p {
+    color: variables.$grey;
+  }
+}

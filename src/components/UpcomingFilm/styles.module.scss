@@ -1,0 +1,157 @@
+@use '../../styles/variables.scss';
+
+h2.title {
+  margin-top: 50px;
+  font-size: 28px;
+  text-transform: uppercase;
+}
+
+.film {
+  display: flex;
+  flex-direction: row;
+
+  .imgWrapper {
+    max-width: 100%;
+
+    img {
+      width: 100%;
+    }
+  }
+
+  .info {
+    margin-left: 16px;
+    max-width: 400px;
+
+    .title {
+      margin-top: 10px;
+      font-size: 32px;
+      font-family: variables.$font;
+      font-weight: 500;
+      line-height: 38px;
+      text-align: left;
+      text-transform: uppercase;
+    }
+
+    .details {
+      p {
+        display: flex;
+        flex-direction: row;
+        max-width: 250px;
+        justify-content: space-between;
+        strong {
+          font-weight: 500;
+          font-size: 16px;
+        }
+
+        .releaseDate {
+          color: variables.$orange;
+        }
+      }
+      .voteWrapper {
+        display: flex;
+        max-width: 250px;
+        justify-content: space-between;
+
+        strong {
+          font-size: 16px;
+          font-weight: 500;
+        }
+
+        .vote {
+          display: flex;
+          gap: 5px;
+          p {
+            margin: 0;
+            padding: 1px 6px;
+            border-radius: 5px;
+            color: variables.$dark;
+          }
+        }
+      }
+    }
+
+    .about {
+      margin: 10px;
+      h2 {
+        font-size: 16px;
+        text-transform: uppercase;
+      }
+
+      p {
+        font-size: 14px;
+        font-weight: 400;
+        margin-bottom: 20px;
+      }
+    }
+  }
+}
+
+// Dark Mode Styles
+:global(body.dark) {
+  h2.title {
+    color: variables.$white;
+  }
+
+  .film {
+    .info {
+      color: variables.$white;
+
+      .details {
+        p {
+          strong {
+            color: variables.$grey;
+          }
+        }
+
+        .voteWrapper {
+          strong {
+            color: variables.$grey;
+          }
+          .vote {
+            p {
+              background-color: variables.$white;
+            }
+          }
+        }
+      }
+
+      .about {
+        h2 {
+          color: variables.$grey;
+        }
+      }
+    }
+  }
+}
+
+// Light Mode Styles
+:global(body.light) {
+  h2.title {
+    color: variables.$dark;
+  }
+
+  .film {
+    .info {
+      color: variables.$dark;
+
+      .details {
+        p {
+          strong {
+            color: variables.$dark;
+          }
+        }
+        .vote {
+          p {
+            background-color: rgb(232, 232, 232);
+          }
+        }
+      }
+
+      .about {
+        h2 {
+          color: variables.$dark;
+        }
+      }
+    }
+  }
+}
