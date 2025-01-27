@@ -1,5 +1,55 @@
+@use '../../styles/variables';
+
 .library {
   display: flex;
   flex-direction: column;
-  gap: 40px;
+
+  .sortContainer {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin: 20px 0 35px;
+  }
+
+  .sortSelect {
+    padding: 8px 14px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin-right: 10px;
+    cursor: pointer;
+    background-color: transparent;
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  .sortButton {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+:global(body.dark) {
+  .library {
+    .sortSelect,
+    .sortButton {
+      color: variables.$white;
+    }
+  }
+}
+
+:global(body.light) {
+  .library {
+    .sortSelect,
+    .sortButton {
+      color: variables.$secondary-dark;
+    }
+  }
 }
