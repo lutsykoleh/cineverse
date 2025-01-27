@@ -1,10 +1,10 @@
 import TeaserFilm from '../TeaserFilm'
 import styles from './styles.module.scss'
 
-const ListMovies = ({ movie }) => {
+const ListMovies = ({ movies }) => {
   return (
     <div className={styles.movies}>
-      {movie?.map((movie) => (
+      {movies?.map((movie) => (
         <TeaserFilm
           key={movie?.id}
           {...{
