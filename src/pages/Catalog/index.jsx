@@ -99,7 +99,7 @@ const Catalog = () => {
       ) : popular.length === 0 ? (
         <NotFound />
       ) : (
-        <ListMovies movie={popular} />
+        <ListMovies movies={popular} />
       )}
       <Pagination
         currentPage={page}

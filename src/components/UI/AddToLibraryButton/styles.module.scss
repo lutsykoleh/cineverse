@@ -1,0 +1,75 @@
+@use '../../../styles/variables.scss';
+
+// Base styles for the button
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.3s ease, color 0.3s ease, transform 0.3s ease;
+
+  &.notAdded {
+    background-color: variables.$grey;
+    color: #333;
+    transition: background 0.3s ease, color 0.3s ease;
+
+    &:active {
+      transform: scale(0.95);
+    }
+  }
+
+  &.added {
+    background: variables.$gradient;
+    color: white;
+    transition: background 0.3s ease, color 0.3s ease;
+  }
+
+  svg {
+    margin-right: 8px;
+    transition: transform 0.3s ease;
+
+    &:hover {
+      transform: rotate(20deg);
+    }
+  }
+}
+
+// Styles for full button text
+.text {
+  display: flex;
+  align-items: center;
+  animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// Animation for transition between states
+@keyframes stateTransition {
+  from {
+    background-color: variables.$grey;
+    color: #333;
+    transform: scale(0.95);
+  }
+  to {
+    background: variables.$gradient;
+    color: white;
+    transform: scale(1);
+  }
+}
+
+.button.added {
+  animation: stateTransition 0.5s ease;
+}

@@ -5,6 +5,7 @@ import 'slick-carousel/slick/slick-theme.css'
 
 import styles from './styles.module.scss'
 import TeaserFilm from '../TeaserFilm'
+import AddToLibraryButton from '../UI/AddToLibraryButton'
 
 const VideoPlayer = ({ videos }) => {
   const [selectedVideo, setSelectedVideo] = useState(videos[0])
@@ -102,7 +103,10 @@ const MovieDetails = ({ movie, videos, recomedationsMovies }) => {
         </div>
 
         <div className={styles.infoSection}>
-          <h1 className={styles.title}>{movie.title}</h1>
+          <div className={styles.titleSection}>
+            <h1 className={styles.title}>{movie.title}</h1>
+            <AddToLibraryButton film={movie} />
+          </div>
 
           <div className={styles.metadata}>
             <span>{formatDate(movie.release_date)}</span>

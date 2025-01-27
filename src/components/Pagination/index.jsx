@@ -5,11 +5,10 @@ import './styles.scss'
 
 const Pagination = ({ currentPage, totalPages, onChange }) => {
   if (totalPages <= 1) return null
-
   return (
     <RCPagination
       current={currentPage}
-      total={totalPages}
+      total={totalPages * 10}
       onChange={onChange}
     />
   )
