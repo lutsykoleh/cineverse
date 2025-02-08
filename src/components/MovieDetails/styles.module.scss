@@ -1,0 +1,280 @@
+@use '../../styles/variables.scss';
+
+.container {
+  min-height: 100vh;
+  position: relative;
+}
+
+.backdrop {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.content {
+  position: relative;
+  display: flex;
+  gap: 48px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 48px 24px;
+
+  .posterSection {
+    flex-shrink: 0;
+    width: 300px;
+
+    .poster {
+      width: 100%;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+    }
+
+    .stats {
+      margin-top: 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      .rating {
+        .score {
+          font-size: 24px;
+          font-weight: bold;
+          color: #ffd700;
+        }
+
+        .votes {
+          color: #666;
+          margin-left: 4px;
+        }
+      }
+
+      .runtime {
+        color: #666;
+        font-size: 14px;
+      }
+    }
+  }
+
+  .infoSection {
+    flex-grow: 1;
+    max-width: 850px;
+
+    .titleSection {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 16px;
+
+      .title {
+        font-size: 48px;
+        font-weight: bold;
+        margin: 0;
+      }
+    }
+
+    .metadata {
+      color: #666;
+      font-size: 14px;
+      margin-bottom: 24px;
+
+      .dot {
+        margin: 0 8px;
+      }
+    }
+
+    .tagline {
+      font-style: italic;
+      color: #999;
+      margin-bottom: 16px;
+    }
+
+    .overview {
+      font-size: 16px;
+      line-height: 1.6;
+      margin-bottom: 32px;
+    }
+
+    .details {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 24px;
+      margin-top: 32px;
+
+      .detailItem {
+        h3 {
+          color: #666;
+          font-size: 14px;
+          margin-bottom: 8px;
+        }
+
+        p {
+          font-size: 16px;
+        }
+      }
+    }
+  }
+}
+
+// Video Player Styles
+.videoSection {
+  margin: 48px;
+
+  h2 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 24px;
+  }
+
+  .videoPlayer {
+    aspect-ratio: 16 / 9;
+    width: 100%;
+    background: black;
+    border-radius: 12px;
+    overflow: hidden;
+
+    iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+  }
+
+  .videoGrid {
+    margin-top: 16px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 16px;
+
+    .videoButton {
+      padding: 8px;
+      border-radius: 8px;
+      border: none;
+      text-align: left;
+      cursor: pointer;
+      transition: background-color 0.2s;
+
+      .videoTitle {
+        font-size: 14px;
+        font-weight: 500;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      .videoType {
+        font-size: 12px;
+        margin-top: 4px;
+      }
+    }
+  }
+}
+
+.recomendationsMovie {
+  padding: 48px 0;
+
+  h2 {
+    display: inline-block;
+    margin-left: 30px;
+    font-size: 32px;
+  }
+
+  .recomendations {
+    margin: 20px 30px;
+  }
+}
+
+@media (max-width: 768px) {
+  .content {
+    flex-direction: column;
+  }
+
+  .posterSection {
+    width: 100%;
+    max-width: 300px;
+    margin: 0 auto;
+  }
+
+  .title {
+    font-size: 32px;
+  }
+
+  .videoGrid {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  }
+}
+
+:global(body.dark) {
+  .container {
+    background-color: #0a0a0a;
+    color: variables.$white;
+  }
+
+  .backdrop {
+    .overlay {
+      background: linear-gradient(
+        to bottom,
+        rgba(10, 10, 10, 0.8) 0%,
+        rgba(10, 10, 10, 0.9) 50%,
+        #0a0a0a 100%
+      );
+    }
+  }
+
+  .videoSection {
+    .videoButton {
+      background-color: #1a1a1a;
+      color: white;
+
+      &:hover,
+      &.active {
+        background-color: #333;
+      }
+
+      .videoType {
+        color: #666;
+      }
+    }
+  }
+}
+
+:global(body.light) {
+  .container {
+    background-color: variables.$white;
+    color: variables.$secondary-dark;
+  }
+
+  .backdrop {
+    .overlay {
+      background: linear-gradient(to bottom, #ffffffcc, #ffffffe6, #ffffff);
+    }
+  }
+
+  .videoSection {
+    .videoButton {
+      background-color: #f7f7f7;
+      color: variables.$secondary-dark;
+
+      &:hover,
+      &.active {
+        background-color: #e6e6e6;
+      }
+
+      .videoType {
+        color: #666;
+      }
+    }
+  }
+}

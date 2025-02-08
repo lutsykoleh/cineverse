@@ -1,20 +1,19 @@
-import { useDispatch, useSelector } from 'react-redux'
-import {
-  addToLibrary,
-  removeFromLibrary,
-} from '../../../redux/slices/librarySlice'
-import styles from './styles.module.scss'
-import { FiCheck, FiPlus } from 'react-icons/fi'
+import { FiCheck, FiPlus } from 'react-icons/fi';
+import { useDispatch, useSelector } from 'react-redux';
+
+import { addToLibrary, removeFromLibrary } from '../../../redux/slices/librarySlice';
+
+import styles from './styles.module.scss';
 
 const AddToLibraryButton = ({ film, type = 'full' }) => {
-  const dispatch = useDispatch()
-  const library = useSelector((state) => state.library.library)
+  const dispatch = useDispatch();
+  const library = useSelector((state) => state.library.library);
 
-  const isInLibrary = library.some((movie) => movie.id === film.id)
+  const isInLibrary = library.some((movie) => movie.id === film.id);
 
   const handleClick = () => {
     if (isInLibrary) {
-      dispatch(removeFromLibrary(film.id))
+      dispatch(removeFromLibrary(film.id));
     } else {
       dispatch(
         addToLibrary({
@@ -24,17 +23,15 @@ const AddToLibraryButton = ({ film, type = 'full' }) => {
           genre_ids: film.genre_ids,
           release_date: film.release_date,
           vote_average: film.vote_average,
-        })
-      )
+        }),
+      );
     }
-  }
+  };
 
   return (
     <button
       onClick={handleClick}
-      className={`${styles.button} ${
-        isInLibrary ? styles.added : styles.notAdded
-      }`}
+      className={`${styles.button} ${isInLibrary ? styles.added : styles.notAdded}`}
     >
       {type === 'full' ? (
         <>
@@ -52,7 +49,7 @@ const AddToLibraryButton = ({ film, type = 'full' }) => {
         <>{isInLibrary ? <FiCheck /> : <FiPlus />}</>
       )}
     </button>
-  )
-}
+  );
+};
 
-export default AddToLibraryButton
+export default AddToLibraryButton;
