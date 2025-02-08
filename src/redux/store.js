@@ -1,8 +1,9 @@
-import { configureStore } from '@reduxjs/toolkit'
-import moviesSlice from './slices/moviesSlice'
-import movieDetailsSlice from './slices/movieDetailsSlice'
-import themeSlice from './slices/themeSlice'
-import libraryReducer from './slices/librarySlice'
+import { configureStore } from '@reduxjs/toolkit';
+
+import libraryReducer from './slices/librarySlice';
+import movieDetailsSlice from './slices/movieDetailsSlice';
+import moviesSlice from './slices/moviesSlice';
+import themeSlice from './slices/themeSlice';
 
 export const store = configureStore({
   reducer: {
@@ -11,4 +12,4 @@ export const store = configureStore({
     theme: themeSlice,
     library: libraryReducer,
   },
-})
+});

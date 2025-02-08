@@ -1,5 +1,6 @@
-import TeaserFilm from '../TeaserFilm'
-import styles from './styles.module.scss'
+import TeaserFilm from '../TeaserFilm';
+
+import styles from './styles.module.scss';
 
 const ListMovies = ({ movies }) => {
   return (
@@ -18,7 +19,7 @@ const ListMovies = ({ movies }) => {
         />
       ))}
     </div>
-  )
-}
+  );
+};
 
-export default ListMovies
+export default ListMovies;
