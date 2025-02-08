@@ -1,16 +1,15 @@
-import { Link } from 'react-router-dom'
-import styles from './styles.module.scss'
-import RatingStars from '../UI/RatingStars'
+import { Link } from 'react-router-dom';
+
+import RatingStars from '../UI/RatingStars';
+
+import styles from './styles.module.scss';
 
 const TeaserFilm = ({ id, img, title, genre, date, rating }) => {
   return (
     <div className={styles.film} key={id}>
       <Link to={`/films/${id}`}>
         <div className={styles.imgWrapper}>
-          <img
-            src={`https://image.tmdb.org/t/p/w500/${img}`}
-            alt="teaser film img"
-          />
+          <img src={`https://image.tmdb.org/t/p/w500/${img}`} alt='teaser film img' />
         </div>
         <div className={styles.info}>
           <h2 className={styles.title}>{title}</h2>
@@ -25,7 +24,7 @@ const TeaserFilm = ({ id, img, title, genre, date, rating }) => {
         </div>
       </Link>
     </div>
-  )
-}
+  );
+};
 
-export default TeaserFilm
+export default TeaserFilm;

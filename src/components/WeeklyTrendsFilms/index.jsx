@@ -1,24 +1,28 @@
-import { useEffect } from 'react'
-import { useSelector, useDispatch } from 'react-redux'
-import TeaserFilm from '../TeaserFilm'
-import styles from './styles.module.scss'
+import { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
 
-import { fetchNowPlaying } from '../../redux/slices/moviesSlice'
+import { fetchNowPlaying } from '../../redux/slices/moviesSlice';
+import TeaserFilm from '../TeaserFilm';
+
+import styles from './styles.module.scss';
 
 const WeeklyTrendsFilms = () => {
-  const { nowPlaying } = useSelector((state) => state.movies)
+  const { nowPlaying } = useSelector((state) => state.movies);
 
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(fetchNowPlaying())
-  }, [dispatch])
+    dispatch(fetchNowPlaying());
+  }, [dispatch]);
 
   return (
     <div className={styles.weeklyTrendsFilms}>
       <div className={styles.header}>
         <h2 className={styles.title}>Weekly Trends</h2>
-        <a className={styles.seeAll}>See all</a>
+        <Link className={styles.seeAll} to='/catalog'>
+          See all
+        </Link>
       </div>
       <div className={styles.films}>
         {nowPlaying?.map((film) => (
@@ -36,7 +40,7 @@ const WeeklyTrendsFilms = () => {
         ))}
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default WeeklyTrendsFilms
+export default WeeklyTrendsFilms;

@@ -1,23 +1,17 @@
-import { useSelector } from 'react-redux'
-import Select from 'react-select'
+import { useSelector } from 'react-redux';
+import Select from 'react-select';
 
-function Dropdown({
-  isMulti = false,
-  placeholder = '',
-  options = [],
-  value,
-  onChange,
-}) {
-  const theme = useSelector((state) => state.theme.theme)
+function Dropdown({ isMulti = false, placeholder = '', options = [], value, onChange }) {
+  const theme = useSelector((state) => state.theme.theme);
   const getValue = () => {
     if (value) {
       return isMulti
         ? options.filter((g) => value.indexOf(g.value) >= 0)
-        : options.find((g) => g.value === value)
+        : options.find((g) => g.value === value);
     } else {
-      return isMulti ? [] : ''
+      return isMulti ? [] : '';
     }
-  }
+  };
 
   const customStyles = {
     container: (provided) => ({
@@ -44,9 +38,7 @@ function Dropdown({
       margin: '0',
       textAlign: 'center',
       border: `1px solid ${theme === 'dark' ? 'white' : 'rgb(89,89,89)'}`,
-      backgroundColor: `${
-        theme === 'dark' ? 'rgb(17,17,17)' : 'rgb(248,248,248)'
-      }`,
+      backgroundColor: `${theme === 'dark' ? 'rgb(17,17,17)' : 'rgb(248,248,248)'}`,
       borderRadius: '8px',
     }),
     option: (provided, state) => ({
@@ -55,7 +47,7 @@ function Dropdown({
         ? 'rgb(248, 119, 25)'
         : `${theme === 'dark' ? 'rgb(255, 255, 255)' : 'rgb(40,40,40)'} `,
       fontSize: state.isSelected ? '24px' : '16px',
-      backgroundColor: 'none',
+      backgroundColor: 'transapent',
     }),
     singleValue: (provided) => ({
       ...provided,
@@ -78,11 +70,11 @@ function Dropdown({
       ...provided,
       color: 'white',
     }),
-  }
+  };
 
   return (
     <Select
-      classNamePrefix="custom-select"
+      classNamePrefix='custom-select'
       onChange={onChange}
       value={getValue()}
       isMulti={isMulti}
@@ -90,7 +82,7 @@ function Dropdown({
       placeholder={placeholder}
       styles={customStyles}
     />
-  )
+  );
 }
 
-export default Dropdown
+export default Dropdown;
